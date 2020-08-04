@@ -14,8 +14,20 @@ echo "nginx image build..."
 docker build -t ft_nginx ./srcs/nginx
 echo "ftps image build..."
 docker build -t ft_ftps ./srcs/ftps --build-arg IP=${IP}
+echo "mysql image build..."
+docker build -t ft_mysql ./srcs/mysql
+echo "phpmyadmin image build..."
+docker build -t ft_phpmyadmin ./srcs/phpmyadmin
+echo "wordpress image build..."
+docker build -t ft_wordpress ./srcs/wordpress --build-arg IP=${IP}
 
 echo "nginx service create..."
-kubectl apply -f ./srcs//yaml/nginx.yaml
+kubectl create -f ./srcs//yaml/nginx.yaml
 echo "ftps service create..."
-kubectl apply -f ./srcs/yaml/ftps.yaml
+kubectl create -f ./srcs/yaml/ftps.yaml
+echo "mysql service create..."
+kubectl create -f ./srcs/yaml/mysql.yaml
+echo "phpmyadmin service create..."
+kubectl create -f ./srcs/yaml/phpmyadmin.yaml
+echo "wordpress service create..."
+kubectl create -f ./srcs/yaml/wordpress.yaml
