@@ -12,15 +12,12 @@ spec:
                 - port: 80
                   name: nginx-http
                   targetPort: 80
-                  # nodePort: 80
                 - port: 443
                   name: nginx-https
                   targetPort: 443
-                  # nodePort: 443
-                # - port: 30022
-                #   name: nginx-ssh
-                #   targetPort: 30022
-                #   # nodePort: 30022
+                - port: 30022
+                  name: nginx-ssh
+                  targetPort: 30022
 
 ---
 
@@ -50,10 +47,10 @@ spec:
                                             name: nginx-http
                                           - containerPort: 443
                                             name: nginx-https
-                                #           - containerPort: 30022
-                                #             name: nginx-ssh
-                                #   livenessProbe:
-                                #         tcpSocket:
-                                #                   port: 30022
-                                #         initialDelaySeconds: 15
-                                #         periodSeconds: 10
+                                          - containerPort: 30022
+                                            name: nginx-ssh
+                                  livenessProbe:
+                                        tcpSocket:
+                                                  port: 30022
+                                        initialDelaySeconds: 15
+                                        periodSeconds: 10

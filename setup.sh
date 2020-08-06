@@ -20,6 +20,13 @@ echo "phpmyadmin image build..."
 docker build -t ft_phpmyadmin ./srcs/phpmyadmin
 echo "wordpress image build..."
 docker build -t ft_wordpress ./srcs/wordpress --build-arg IP=${IP}
+echo "influxdb image build..."
+docker build -t ft_influxdb ./srcs/influxdb 
+echo "telegraf image build..."
+docker build -t ft_telegraf ./srcs/telegraf
+echo "grafana image build..."
+docker build -t ft_grafana ./srcs/grafana 
+
 
 echo "nginx service create..."
 kubectl create -f ./srcs//yaml/nginx.yaml
@@ -31,3 +38,9 @@ echo "phpmyadmin service create..."
 kubectl create -f ./srcs/yaml/phpmyadmin.yaml
 echo "wordpress service create..."
 kubectl create -f ./srcs/yaml/wordpress.yaml
+echo "influxdb service create..."
+kubectl create -f ./srcs/yaml/influxdb.yaml
+echo "telegraf service create..."
+kubectl create -f ./srcs/yaml/telegraf.yaml
+echo "grafana service create..."
+kubectl create -f ./srcs/yaml/grafana.yaml
